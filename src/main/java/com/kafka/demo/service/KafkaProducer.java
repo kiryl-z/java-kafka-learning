@@ -1,5 +1,6 @@
 package com.kafka.demo.service;
 
+import com.kafka.demo.models.MessageBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,10 @@ public class KafkaProducer {
     private String topic;
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, MessageBody> kafkaTemplate;
 
-    public void SendMessage(String message) {
-        logger.info(String.format("#### -> Producing message -> %s", message));
+    public void SendMessage(MessageBody message) {
+        logger.info(String.format("#### -> Producing message -> %s", message.getContent()));
         this.kafkaTemplate.send(topic, message);
     }
 //    public void SendMessage(String messageContent) {

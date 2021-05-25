@@ -18,7 +18,7 @@ public class MessageController {
 
     @PostMapping("/kafka")
     public String postController(@RequestBody MessageBody messageBody) {
-        this.sendToKafka.SendMessage(messageBody.getContent());
+        this.sendToKafka.SendMessage(messageBody);
         return "200";
     }
 
