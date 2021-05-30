@@ -23,7 +23,4 @@ public class KafkaProducer {
         logger.info(String.format("#### -> Producing message -> %s", message.getContent()));
         this.kafkaTemplate.send(topic, message);
     }
-//    public void SendMessage(String messageContent) {
-//        System.out.println(messageContent);
-//    }
 }

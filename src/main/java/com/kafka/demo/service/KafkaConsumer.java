@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-
+// Doesn't work, just a mockup
 @Service
 public class KafkaConsumer {
     private final Logger logger = LoggerFactory.getLogger(KafkaConsumer.class);
