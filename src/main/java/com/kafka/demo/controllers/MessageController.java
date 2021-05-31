@@ -1,6 +1,7 @@
 package com.kafka.demo.controllers;
 
-import com.kafka.demo.models.MessageBody;
+import com.kafka.demo.models.Client;
+import com.kafka.demo.models.Transaction;
 import com.kafka.demo.service.KafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,15 @@ public class MessageController {
         this.sendToKafka = sendToKafka;
     }
 
-    @PostMapping("/kafka")
-    public String postController(@RequestBody MessageBody messageBody) {
-        this.sendToKafka.SendMessage(messageBody);
+    @PostMapping("/client")
+    public String postController(@RequestBody Client client) {
+        this.sendToKafka.SendMessage(client);
+        return "200";
+    }
+
+    @PostMapping("/transaction")
+    public String postController(@RequestBody Transaction transaction) {
+        this.sendToKafka.SendMessage(transaction);
         return "200";
     }
 

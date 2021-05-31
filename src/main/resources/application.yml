@@ -10,5 +10,6 @@ spring:
       bootstrap-servers: localhost:9092
       key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    topic:
-      name: restcontrollertest
+    topics:
+      client: clienttest
+      transaction: transactiontest

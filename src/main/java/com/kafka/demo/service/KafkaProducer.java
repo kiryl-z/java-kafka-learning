@@ -1,6 +1,7 @@
 package com.kafka.demo.service;
 
-import com.kafka.demo.models.MessageBody;
+import com.kafka.demo.models.Client;
+import com.kafka.demo.models.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,25 @@ public class KafkaProducer {
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaProducer.class);
 
-    @Value("${spring.kafka.topic.name}")
-    private String topic;
+    @Value("${spring.kafka.topics.client}")
+    private String clientTopic;
+
+    @Value("${spring.kafka.topics.transaction}")
+    private String transactionTopic;
 
     @Autowired
-    private KafkaTemplate<String, MessageBody> kafkaTemplate;
+    private KafkaTemplate<String, Client> clientTemplate;
 
-    public void SendMessage(MessageBody message) {
-        logger.info(String.format("#### -> Producing message -> %s", message.getContent()));
-        this.kafkaTemplate.send(topic, message);
+    @Autowired
+    private KafkaTemplate<String, Transaction> transactionTemplate;
+
+    public void SendMessage(Client message) {
+        logger.info(String.format("#### -> Producing client data: %s", message.getContent()));
+        this.clientTemplate.send(clientTopic, message);
+    }
+
+    public void SendMessage(Transaction message) {
+        logger.info(String.format("#### -> Producing transaction for a client with id: %s", message.getClientId()));
+        this.transactionTemplate.send(transactionTopic, message);
     }
 }

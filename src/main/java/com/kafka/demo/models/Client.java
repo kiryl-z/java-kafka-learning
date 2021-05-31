@@ -1,11 +1,11 @@
 package com.kafka.demo.models;
 
 //plain old Java object - pojo
-public class MessageBody {
+public class Client {
     private long id;
     private String content;
 
-    public MessageBody(long id, String content) {
+    public Client(long id, String content) {
         this.id = id;
         this.content = content;
     }
