@@ -1,5 +1,7 @@
 package com.kafka.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
 
 //plain old Java object - pojo
@@ -10,6 +12,7 @@ public class Transaction {
     private TransactionType orderType;
     private Integer quantity;
     private Double price;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
     public Transaction(String bank, Long clientId, TransactionType orderType, Integer quantity, Double price, LocalDateTime createdAt) {
@@ -43,9 +46,9 @@ public class Transaction {
 
     public Double getPrice() { return price; }
 
-    public void setPrice(Double price) { this.price = price;}
+    public void setPrice(Double price) { this.price = price; }
 
-//    public LocalDateTime getCreatedAt() { return createdAt; }
-//
-//    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }

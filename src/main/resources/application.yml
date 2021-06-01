@@ -11,5 +11,5 @@ spring:
       key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     topics:
-      client: clienttest
-      transaction: transactiontest
+      client: client
+      transaction: transaction
