@@ -1,11 +1,11 @@
-package com.kafka.demo;
+package com.kafka.demo.applications;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestApp {
+public class ProducerApp {
     public static void main(String[] args) {
-        SpringApplication.run(RestApp.class, args);
+        SpringApplication.run(ProducerApp.class, args);
     }
 }

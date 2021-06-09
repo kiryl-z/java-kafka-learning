@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   kafka:
     consumer:
@@ -13,3 +16,5 @@ spring:
     topics:
       client: client
       transaction: transaction
+    template:
+      default-topic: raw

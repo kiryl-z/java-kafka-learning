@@ -3,6 +3,8 @@ target/
 .mvn/wrapper/MavenWrapperDownloader.java
 .mvn/wrapper/maven-wrapper.jar
 .mvn/wrapper/maven-wrapper.properties
+mvmw
+mvnw.cmd
 !**/src/main/**/target/
 !**/src/test/**/target/
 

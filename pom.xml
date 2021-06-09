@@ -16,7 +16,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>16</java.version>
-		<start-class>com.${groupId}.${artifactId}.RestApp</start-class>
+		<start-class>com.${groupId}.${artifactId}.applications.ProducerApp</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -24,14 +24,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka</artifactId>
-			<version>2.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

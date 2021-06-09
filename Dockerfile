@@ -1,6 +1,6 @@
 FROM adoptopenjdk/openjdk16:alpine-slim
 
-ENV USER="test_user"
+ENV USER="nobody"
 
 USER $USER
 
