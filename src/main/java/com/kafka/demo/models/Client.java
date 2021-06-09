@@ -1,6 +1,5 @@
 package com.kafka.demo.models;
 
-//plain old Java object - pojo
 public class Client {
     private long id;
     private String content;

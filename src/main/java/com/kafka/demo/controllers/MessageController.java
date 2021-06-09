@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 public class MessageController {
 
     private KafkaProducer sendToKafka;
-//annotation ensures that HTTP POST requests to /kafka are mapped to the MessageBody class.
-// @requestbody converts the message to java json format
+
+
     @Autowired
     MessageController(KafkaProducer sendToKafka) {
         this.sendToKafka = sendToKafka;
     }
-
+    /** Annotation  @PostMapping ensures that HTTP POST requests to /kafka are mapped to the MessageBody class.*/
     @PostMapping("/client")
     public String postController(@RequestBody Client client) {
         this.sendToKafka.SendMessage(client);
@@ -24,6 +24,7 @@ public class MessageController {
     }
 
     @PostMapping("/transaction")
+    /** @requestbody converts the message to java json format */
     public String postController(@RequestBody Transaction transaction) {
         this.sendToKafka.SendMessage(transaction);
         return "200";

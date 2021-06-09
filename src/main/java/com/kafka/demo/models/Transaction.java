@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
 
-//plain old Java object - pojo
 public class Transaction {
 
     private String bank;
