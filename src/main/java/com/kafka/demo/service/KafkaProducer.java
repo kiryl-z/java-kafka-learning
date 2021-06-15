@@ -26,12 +26,12 @@ public class KafkaProducer {
     @Autowired
     private KafkaTemplate<String, Transaction> transactionTemplate;
 
-    public void SendMessage(Client message) {
+    public void sendMessage(Client message) {
         logger.info(String.format("#### -> Producing client data: %s", message.getContent()));
         this.clientTemplate.send(clientTopic, message);
     }
 
-    public void SendMessage(Transaction message) {
+    public void sendMessage(Transaction message) {
         logger.info(String.format("#### -> Producing transaction for a client with id: %s", message.getClientId()));
         this.transactionTemplate.send(transactionTopic, message);
     }

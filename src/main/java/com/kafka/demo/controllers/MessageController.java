@@ -19,14 +19,14 @@ public class MessageController {
     /** Annotation  @PostMapping ensures that HTTP POST requests to /kafka are mapped to the MessageBody class.*/
     @PostMapping("/client")
     public String postController(@RequestBody Client client) {
-        this.sendToKafka.SendMessage(client);
+        this.sendToKafka.sendMessage(client);
         return "200";
     }
 
     @PostMapping("/transaction")
     /** @requestbody converts the message to java json format */
     public String postController(@RequestBody Transaction transaction) {
-        this.sendToKafka.SendMessage(transaction);
+        this.sendToKafka.sendMessage(transaction);
         return "200";
     }
 
