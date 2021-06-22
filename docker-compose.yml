@@ -1,9 +1,12 @@
-version: '1'
+version: "3.8"
 services:
   zookeeper:
     image: wurstmeister/zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - 2181
+        - 2181:22181
     healthcheck:
       test: "nc -z 127.0.0.1 2181"
       interval: 5s
@@ -11,18 +14,35 @@ services:
       retries: 10
 
   kafka:
-    image: wurstmeister/kafka:2.11-1.1.0
+    image: wurstmeister/kafka:2.13-2.7.0
     ports:
-      - 9092
+      - 9092:29092
     depends_on:
       zookeeper:
         condition: service_healthy
     healthcheck:
-      test: "/opt/kafka/bin/kafka-topics.sh --zookeeper zookeeper --list | grep data.quote.stream.${PRODUCT_TYPE}.event.time"
+      test: "/opt/kafka/bin/kafka-topics.sh config/zookeeper.properties"
       interval: 10s
       timeout: 10s
       retries: 10
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_CREATE_TOPICS: "data.quote.stream.${PRODUCT_TYPE}.event.time:12:1,data.quote.stream.${PRODUCT_TYPE}.joined-events:12:1,data.quote.stream.${PRODUCT_TYPE}.joined-events.deser-dlq:12:1,data.quote.stream.${PRODUCT_TYPE}.joined-events.processing-dlq:12:1,raw:12:1,data.quote.stream.joined-events.deser-dlq:12:1,data.quote.stream.joined-events.dlq:12:1"
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  producer:
+    image: kafka-producer
+    depends_on:
+      - kafka
+    ports:
+      - 8080:8080
+
+  consumer:
+    image: kafka-consumer
+    depends_on:
+      - kafka
+    ports:
+      - 29092

@@ -5,20 +5,21 @@ import com.kafka.demo.models.Client;
 import com.kafka.demo.models.Transaction;
 import com.kafka.demo.models.TransactionType;
 import com.kafka.demo.service.KafkaProducer;
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@RunWith(SpringRunner.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 @SpringBootTest
 public class MessageControllerUnitTest {
 

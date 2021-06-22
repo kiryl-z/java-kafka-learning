@@ -3,6 +3,7 @@ package com.kafka.demo.controllers;
 import com.kafka.demo.models.Client;
 import com.kafka.demo.models.Transaction;
 import com.kafka.demo.service.KafkaProducer;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
